@@ -1,0 +1,119 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Radja Herlangga Web</title>
+    <style>
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        height: 70px;
+        box-shadow: 0 4px 8px 0 rgba(250, 250, 250, 0.2),
+          0 6px 20px 0 rgba(255, 255, 255, 0.19);
+        border-radius: 0px 0px 8px 8px;
+      }
+      header ul {
+        list-style-type: none;
+      }
+      header ul li {
+        float: left;
+        margin-right: 20px;
+      }
+      .link-menu {
+        text-decoration: none;
+        font-weight: bold;
+        color: #969595;
+      }
+      .link-menu:hover {
+        color: rgb(49, 49, 228);
+      }
+      .link-active {
+        color: rgb(224, 221, 221);
+        border-bottom: #3282b8 3px solid;
+        padding-bottom: 3px;
+      }
+      .link-active:hover {
+        color: rgb(224, 221, 221);
+      }
+      #perkenalan-diri {
+        width: 100%;
+        height: calc(100% - 70px);
+      }
+      .kiri-diri {
+        float: left;
+        display: flex;
+        justify-content: center;
+        width: 40%;
+        height: 100%;
+        flex-direction: column;
+        margin-left: 9px;
+      }
+      .kanan-diri {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        float: right;
+        width: 55%;
+        height: 100%;
+      }
+      @media screen and (max-width: 800px) {
+        .kiri-diri {
+          width: 80%;
+          height: fit-content;
+        }
+        .kanan-diri {
+          height: 75%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="./image/logo.png" alt="logo rhcom" />
+      </div>
+      <div class="menu">
+        <ul>
+          <li><a class="link-menu link-active" href=".">Home</a></li>
+          <li><a class="link-menu" href=".">Keahlian</a></li>
+          <li><a class="link-menu" href=".">Alamat</a></li>
+        </ul>
+      </div>
+    </header>
+    <main>
+      <div id="Perkenalan-diri">
+        <div class="kanan-diri"><div class="container">
+          <div class="liquid"></div>
+          <div class="liquid"></div>
+          <div class="liquid"></div>
+          <div class="liquid"></div>
+        </div>
+        <svg>
+          <filter id="gooey">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="10" />
+            <feColorMatrix values="
+                1 0 0 0 0
+                0 1 0 0 0
+                0 0 1 0 0
+                0 0 0 20 -10
+                " />
+          </filter>
+        </svg>
+          <img src="./image/bg1.png" alt="gambar-diri-ku" id="diriku" />
+        </div>
+        <div class="kiri-diri">
+          <h2 id="my-name">M. Radja Herlangga</h2>
+          <p>
+            Fullstack Website Developer, Saya Remaja M. Radja Herlangga 16
+            Tahun, Sekolah di SMKN 2 Kota Jambi Pasir Putih. saya mempunyai
+            skill coding
+          </p>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
