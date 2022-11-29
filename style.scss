@@ -23,8 +23,25 @@ html{
 body { 
   background: #0e1e2f;
 }
+// .btn-kanan{
+//   position: absolute;
+//   right: 0;
+//   bottom: 0;
+// }
+#btn-download-cv{
+  position: sticky;
+  color: white;
+  font-weight: bold;
+  background-color: $color-2;
+  border-radius: 15px;
+  padding: 10px 20px 10px 20px;
+  float: right;
+  bottom: 0;
+}
+// ? Animasi Kanan Diri
 .container {
   position: relative;
+  margin-left: 110px;
   width: 300px;
   height: 300px;
   animation: rotate 4s ease-out infinite;
@@ -115,4 +132,10 @@ body {
 svg {
   width: 20%;
   height: 20%;
+}
+
+@media only screen and (max-width:800px) {
+  .container{
+    margin: 0;
+  }
 }
