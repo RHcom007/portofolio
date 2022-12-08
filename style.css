@@ -5,15 +5,15 @@ html {
 
 #diriku {
   position: absolute;
-  background-color: #3282B8;
+  background-color: #3282b8;
   border-radius: 59% 41% 70% 30%/78% 62% 38% 22%;
   height: 250px;
-  border-bottom: #3282B8 solid 3px;
+  border-bottom: #3282b8 solid 3px;
 }
 
 #my-name {
   display: inline;
-  border-bottom: #3282B8 3px solid;
+  border-bottom: #3282b8 3px solid;
   padding-bottom: 5px;
 }
 
@@ -22,20 +22,30 @@ body {
 }
 
 #btn-download-cv {
-  position: -webkit-sticky;
-  position: sticky;
+  position: fixed;
   color: white;
   font-weight: bold;
-  background-color: #3282B8;
+  background-color: #3282b8;
   border-radius: 15px;
   padding: 10px 20px 10px 20px;
-  float: right;
-  bottom: 0;
+  right: 5;
+  bottom: 5;
   text-decoration: none;
 }
 
+.btn {
+  color: white;
+  font-weight: bold;
+  background-color: #3282b8;
+  border-radius: 4px;
+  padding: 10px 20px 10px 20px;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+}
+
 hr {
-  border: #0F4C75 2px solid;
+  border: #0f4c75 2px solid;
   display: block;
 }
 
@@ -55,11 +65,76 @@ hr {
   flex-direction: column;
   overflow: hidden;
   padding: 0px 5px 0px 5px;
-  border: #3282B8 1px solid;
+  border: #3282b8 1px solid;
   border-radius: 8px;
 }
 .card-ahli h4 {
   margin-bottom: 8px;
+}
+
+.project-ku {
+  background-color: rgb(15, 76, 117);
+  padding: 50px;
+}
+.project-ku h2 {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding-right: 30px;
+  border-bottom: 3px solid black;
+}
+.project-ku .datanya {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
+}
+.project-ku .card-ahli img {
+  width: 120%;
+}
+
+.anonym-chat {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  margin-left: auto;
+  margin-right: auto;
+  width: 300px;
+  border-radius: 8px;
+  border-width: 2px;
+  border-color: rgb(50, 130, 184);
+  -o-border-image: initial;
+     border-image: initial;
+  border-style: dotted;
+  padding: 10px;
+}
+.anonym-chat .input-area input, .anonym-chat .input-area textarea {
+  width: 100%;
+  background-color: rgb(15, 76, 117);
+  min-height: 30px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(50, 130, 184);
+  -o-border-image: initial;
+     border-image: initial;
+  border-radius: 8px;
+  color: white;
+}
+
+.social h4 {
+  text-align: center;
+}
+.social .gambar-sosmed {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+.social .gambar-sosmed img {
+  height: 32px;
 }
 
 .container {
@@ -100,7 +175,7 @@ hr {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: #3282B8;
+  background: #3282b8;
   width: 140px;
   height: 140px;
   border-radius: 50%;
