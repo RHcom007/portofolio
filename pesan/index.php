@@ -5,9 +5,6 @@
   $q = $con->prepare("SELECT * FROM pesanku;");
   $q->execute();
   $result = $q->get_result();
-  $pesan = [];
-  while($pesan[] = $result->fetch_assoc()){
-  }
 ?>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,13 +13,14 @@
             margin: 0 auto;
             max-width: 800px;
             padding: 0 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         .container {
             border: 2px solid #dedede;
             background-color: #f1f1f1;
             border-radius: 5px;
-            padding: 10px;
+            padding: 4px;
             margin: 10px 0;
         }
 
@@ -37,12 +35,13 @@
             display: table;
         }
 
-        .container img {
-            float: left;
-            max-width: 60px;
-            width: 100%;
-            margin-right: 20px;
-            border-radius: 50%;
+        .container h3 {
+            display: block;
+            margin: 0px;
+        }
+
+        .container p {
+            margin: 0;
         }
 
         .container img.right {
@@ -53,12 +52,14 @@
 
         .time-right {
             float: right;
+            font-size: small;
             color: #aaa;
         }
 
         .time-left {
             float: left;
             color: #999;
+            font-size: small;
         }
     </style>
 </head>
@@ -66,13 +67,13 @@
 <body>
 
     <h2>Chat Messages</h2>
-    <?php foreach ($pesan as $pesannya) : ?>
+    <?php while($pesannya = $result->fetch_assoc()):?>
         <div class="container">
             <h3><?= $pesannya['nama'] ?></h3>
             <p><?= $pesannya['pesan'] ?></p>
             <span class="time-right"><?= $pesannya['waktu'] ?></span>
         </div>
-    <?php endforeach; ?>
+    <?php endwhile; ?>
     </div>
 
 </body>
