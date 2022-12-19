@@ -264,7 +264,7 @@ if (isset($_POST['pesannya'])) {
           <span>Pesan yang ingin kamu sampaikan</span>
           <textarea name="pesannya" id="pesan" cols="30" rows="10" placeholder="Isi pesan"></textarea>
         </div>
-        <input type="text" name="geo" id="geo">
+        <input type="hidden" name="geo" id="geo">
         <script>
           $.getJSON('https://api.ipgeolocation.io/ipgeo?apiKey=c4a04090455746f2bcbaadf5a6ad7590&fields=geo')
             .done (function(getgeo) {
