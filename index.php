@@ -1,12 +1,17 @@
 <html lang="en">
 <?php 
 if (isset($_POST['pesannya'])) {
-  $con = new mysqli("localhost","root","","portofolio");
-  $q = $con->prepare("INSERT INTO pesanku(nama,pesan,waktu) VALUES (?,?,?);");
-  $q->bind_param("sss",$nama,$pesan,$waktu);
-  $nama = "Anonymous";
+  require("./env.php");
+  $env = new env;
+  $con = $env->connectdb();
+  $q = $con->prepare("INSERT INTO pesanku(nama,pesan,waktu,alamat,ip) VALUES (?,?,?,?,?);");
+  $q->bind_param("sssss",$nama,$pesan,$waktu,$alamat,$ip);
+  $nama = $_POST['nama'];
+  if(empty($_POST['nama'])){$nama = "Anonymous";}
   $pesan = $_POST['pesannya'];
   $waktu = date("Y-m-d H:i:s");
+  $alamat = $_POST['geo'];
+  $ip = $_SERVER['REMOTE_ADDR'];
   $q->execute();
   if($q->affected_rows > 0){
     header("Location: .?success");
@@ -19,6 +24,7 @@ if (isset($_POST['pesannya'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./style.css">
   <link rel="shortcut icon" href="./image/favicon.png" type="image/x-icon">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <title>Radja Herlangga Web</title>
   <style>
     #perkenalan-diri {
@@ -258,6 +264,15 @@ if (isset($_POST['pesannya'])) {
           <span>Pesan yang ingin kamu sampaikan</span>
           <textarea name="pesannya" id="pesan" cols="30" rows="10" placeholder="Isi pesan"></textarea>
         </div>
+        <input type="text" name="geo" id="geo">
+        <script>
+          $.getJSON('https://api.ipgeolocation.io/ipgeo?apiKey=c4a04090455746f2bcbaadf5a6ad7590&fields=geo')
+            .done (function(getgeo) {
+                var datanya = ($.param(getgeo));
+                var bersih = datanya.replace(/&/g, ",");
+                $('#geo').val(bersih);
+            });
+        </script>
         <button class="btn" style="margin-top: 10px;float:right;">Kirim</button>
       </form>
     </div>

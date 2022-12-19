@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html>
-<?php 
-  $con = new mysqli("localhost","root","","portofolio");
-  $q = $con->prepare("SELECT * FROM pesanku;");
-  $q->execute();
-  $result = $q->get_result();
+<?php
+require("../env.php");
+$env = new env;
+$con = $env->connectdb();
+$q = $con->prepare("SELECT * FROM pesanku;");
+$q->execute();
+$result = $q->get_result();
 ?>
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
@@ -17,6 +20,7 @@
         }
 
         .container {
+            position: relative;
             border: 2px solid #dedede;
             background-color: #f1f1f1;
             border-radius: 5px;
@@ -61,21 +65,61 @@
             color: #999;
             font-size: small;
         }
+
+        .lengkap {
+            visibility: hidden;
+            position: absolute;
+            right: 0;
+            top: 0;
+            z-index: 999;
+            background-color: white;
+            border-radius: 4px;
+            width: 500px;
+            font-size: smaller;
+            overflow-wrap: break-word;
+            padding: 4px;
+            border: #aaa 1px solid;
+        }
     </style>
 </head>
 
 <body>
 
     <h2>Chat Messages</h2>
-    <?php while($pesannya = $result->fetch_assoc()):?>
-        <div class="container">
-            <h3><?= $pesannya['nama'] ?></h3>
-            <p><?= $pesannya['pesan'] ?></p>
-            <span class="time-right"><?= $pesannya['waktu'] ?></span>
+    <?php $i = 0;
+    while ($pesannya = $result->fetch_assoc()):
+        $i++ ?>
+    <div class="container" id="pesanke-<?= $i ?>">
+        <h3>
+            <?= $pesannya['nama'] ?>
+        </h3>
+        <p>
+            <?= $pesannya['pesan'] ?>
+        </p>
+        <span class="time-right">
+            <?= $pesannya['waktu'] ?>
+        </span>
+        <div class="lengkap" id="lengkapke-<?= $i ?>">
+            <span>IP : <?= $pesannya['ip'] ?></span><br />
+            <span>ALAMAT : <?= $pesannya['alamat'] ?></span><br />
         </div>
+        <script>
+            pesanke<?= $i ?> = document.getElementById("pesanke-<?= $i ?>");
+            lengkapke<?= $i ?> = document.getElementById("lengkapke-<?= $i ?>");
+            pesanke<?= $i ?>.addEventListener('mouseenter', () => {
+                setTimeout(() => {
+                    // this function will run after 5 seconds
+                    lengkapke<?= $i ?>.style.visibility = 'visible';
+                }, 5000);
+            });
+
+            pesanke<?= $i ?>.addEventListener('mouseleave', () => {
+                lengkapke<?= $i ?>.style.visibility = 'hidden';
+            });
+        </script>
+    </div>
     <?php endwhile; ?>
     </div>
-
 </body>
 
 </html>
