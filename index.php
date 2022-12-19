@@ -1,23 +1,26 @@
 <html lang="en">
-<?php 
+<?php
 if (isset($_POST['pesannya'])) {
   require("./env.php");
   $env = new env;
   $con = $env->connectdb();
   $q = $con->prepare("INSERT INTO pesanku(nama,pesan,waktu,alamat,ip) VALUES (?,?,?,?,?);");
-  $q->bind_param("sssss",$nama,$pesan,$waktu,$alamat,$ip);
+  $q->bind_param("sssss", $nama, $pesan, $waktu, $alamat, $ip);
   $nama = $_POST['nama'];
-  if(empty($_POST['nama'])){$nama = "Anonymous";}
+  if (empty($_POST['nama'])) {
+    $nama = "Anonymous";
+  }
   $pesan = $_POST['pesannya'];
   $waktu = date("Y-m-d H:i:s");
   $alamat = $_POST['geo'];
   $ip = $_SERVER['REMOTE_ADDR'];
   $q->execute();
-  if($q->affected_rows > 0){
+  if ($q->affected_rows > 0) {
     header("Location: .?success");
   }
 }
 ?>
+
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -113,6 +116,65 @@ if (isset($_POST['pesannya'])) {
       padding-bottom: 3px;
     }
 
+    #kirim {
+      margin-top: 5px;
+      float: right;
+      font-family: inherit;
+      font-size: 18px;
+      background: royalblue;
+      color: white;
+      padding: 5px;
+      display: flex;
+      align-items: center;
+      border: none;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: all 0.2s;
+      font-weight: lighter;
+    }
+
+    #kirim:hover{
+      cursor: pointer;
+    }
+
+    #kirim span {
+      display: block;
+      margin-left: 0.3em;
+      transition: all 0.3s ease-in-out;
+    }
+
+    #kirim svg {
+      display: block;
+      transform-origin: center center;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    #kirim:hover .svg-wrapper {
+      animation: fly-1 0.6s ease-in-out infinite alternate;
+    }
+
+    #kirim:hover svg {
+      transform: translateX(1.2em) rotate(45deg) scale(1.1);
+    }
+
+    #kirim:hover span {
+      transform: translateX(5em);
+    }
+
+    #kirim:active {
+      transform: scale(0.95);
+    }
+
+    @keyframes fly-1 {
+      from {
+        transform: translateY(0.1em);
+      }
+
+      to {
+        transform: translateY(-0.1em);
+      }
+    }
+
     .link-active:hover {
       color: rgb(224, 221, 221);
     }
@@ -166,7 +228,8 @@ if (isset($_POST['pesannya'])) {
         <div class="card-ahli">
           <img src="./image/ppdb-app.png" alt="gambar project RHcom">
           <h4>PPDB Sekolah</h4>
-          <p>Aplikasi PPDB sekolah yang menggunakan Laravel, untuk memudahkan sekolah menerima murid baru jalur online dan mempercepat pengelolaan data</p>
+          <p>Aplikasi PPDB sekolah yang menggunakan Laravel, untuk memudahkan sekolah menerima murid baru jalur online
+            dan mempercepat pengelolaan data</p>
         </div>
         <div class="card-ahli">
           <img src="./image/gambar-project.jpg" alt="gambar project RHcom">
@@ -267,13 +330,25 @@ if (isset($_POST['pesannya'])) {
         <input type="hidden" name="geo" id="geo">
         <script>
           $.getJSON('https://api.ipgeolocation.io/ipgeo?apiKey=c4a04090455746f2bcbaadf5a6ad7590&fields=geo')
-            .done (function(getgeo) {
-                var datanya = ($.param(getgeo));
-                var bersih = datanya.replace(/&/g, ",");
-                $('#geo').val(bersih);
+            .done(function (getgeo) {
+              var datanya = ($.param(getgeo));
+              var bersih = datanya.replace(/&/g, ",");
+              $('#geo').val(bersih);
             });
         </script>
-        <button class="btn" style="margin-top: 10px;float:right;">Kirim</button>
+        <button id="kirim">
+          <div class="svg-wrapper-1">
+            <div class="svg-wrapper">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20px" height="20px">
+                <path fill="none" d="M0 0h24v24H0z"></path>
+                <path fill="currentColor"
+                  d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z">
+                </path>
+              </svg>
+            </div>
+          </div>
+          <span>Send</span>
+        </button>
       </form>
     </div>
     <div class="social" id="social-media">
@@ -287,10 +362,10 @@ if (isset($_POST['pesannya'])) {
       </div>
     </div>
   </main>
-  <?php 
+  <?php
   if (isset($_GET['success'])) {
     echo "<script>alert('Berhasil mengirim data')</script>";
-  } 
+  }
   ?>
 
 </body>
