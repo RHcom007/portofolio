@@ -103,22 +103,22 @@ $result = $q->get_result();
             <span>IP : <?= $pesannya['ip'] ?></span><br />
             <span>ALAMAT : <?= $pesannya['alamat'] ?></span><br />
         </div>
-        <script>
-            pesanke<?= $i ?> = document.getElementById("pesanke-<?= $i ?>");
-            lengkapke<?= $i ?> = document.getElementById("lengkapke-<?= $i ?>");
-            pesanke<?= $i ?>.addEventListener('mouseenter', () => {
-                setTimeout(() => {
-                    // this function will run after 5 seconds
-                    lengkapke<?= $i ?>.style.visibility = 'visible';
-                }, 5000);
-            });
-
-            pesanke<?= $i ?>.addEventListener('mouseleave', () => {
-                lengkapke<?= $i ?>.style.visibility = 'hidden';
-            });
-        </script>
     </div>
     <?php endwhile; ?>
+    <script>
+        var n = <?= $i ?>;
+        for (let i = 1; i <= n; i++) {
+            const pesanke = document.getElementById(`pesanke-${i}`);
+            const lengkapke = document.getElementById(`lengkapke-${i}`);
+            pesanke.addEventListener('mouseenter', () => {
+                lengkapke.style.visibility = 'visible';
+            });
+
+            pesanke.addEventListener('mouseleave', () => {
+                lengkapke.style.visibility = 'hidden';
+            });
+        }
+    </script>
     </div>
 </body>
 

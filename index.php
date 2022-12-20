@@ -1,4 +1,3 @@
-<html lang="en">
 <?php
 if (isset($_POST['pesannya'])) {
   require("./env.php");
@@ -16,10 +15,18 @@ if (isset($_POST['pesannya'])) {
   $ip = $_SERVER['REMOTE_ADDR'];
   $q->execute();
   if ($q->affected_rows > 0) {
-    header("Location: .?success");
+    $hasilq = array("success" => TRUE);
+    // header("Location: .?success");
+  } else {
+    $hasilq = array("success" => false);
   }
+  $json = json_encode($hasilq);
+  header('Content-Type: application/json');
+  echo $json;
+  exit();
 }
 ?>
+<html lang="en">
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -133,7 +140,7 @@ if (isset($_POST['pesannya'])) {
       font-weight: lighter;
     }
 
-    #kirim:hover{
+    #kirim:hover {
       cursor: pointer;
     }
 
@@ -317,7 +324,7 @@ if (isset($_POST['pesannya'])) {
       </div>
     </div>
     <div class="anonym-chat">
-      <form action="" method="post">
+      <form action="" method="post" id="pesan-form">
         <h3>Kirim pesan secara Anonymous</h3>
         <div class="input-area">
           <span>Nama mu</span>
@@ -325,18 +332,10 @@ if (isset($_POST['pesannya'])) {
         </div>
         <div class="input-area">
           <span>Pesan yang ingin kamu sampaikan</span>
-          <textarea name="pesannya" id="pesan" cols="30" rows="10" placeholder="Isi pesan"></textarea>
+          <textarea name="pesannya" id="pesan" cols="30" rows="10" placeholder="Isi pesan" required></textarea>
         </div>
         <input type="hidden" name="geo" id="geo">
-        <script>
-          $.getJSON('https://api.ipgeolocation.io/ipgeo?apiKey=c4a04090455746f2bcbaadf5a6ad7590&fields=geo')
-            .done(function (getgeo) {
-              var datanya = ($.param(getgeo));
-              var bersih = datanya.replace(/&/g, ",");
-              $('#geo').val(bersih);
-            });
-        </script>
-        <button id="kirim">
+        <button id="kirim" type="button">
           <div class="svg-wrapper-1">
             <div class="svg-wrapper">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20px" height="20px">
@@ -351,6 +350,32 @@ if (isset($_POST['pesannya'])) {
         </button>
       </form>
     </div>
+    <script>
+      $.getJSON('https://api.ipgeolocation.io/ipgeo?apiKey=c4a04090455746f2bcbaadf5a6ad7590&fields=geo')
+      .done(function (getgeo) {
+        var datanya = ($.param(getgeo));
+        var bersih = datanya.replace(/&/g, ",");
+        $('#geo').val(bersih);
+      });
+      $(document).ready(function () {
+        $('#kirim').click(runFunction);
+      });
+      function runFunction() {
+        $.ajax({
+          type: 'POST',
+          url: '.',
+          data: $('#pesan-form').serialize(), // serialize the form data
+          contentType: 'application/x-www-form-urlencoded',
+          processData: false,
+          success: function (response) {
+            console.log(response);
+            if(response.success === true){
+              alert("Pesan berhasil terkirim");
+            }
+          }
+        });
+      }
+    </script>
     <div class="social" id="social-media">
       <h4>Hubungiku dengan cara</h4>
       <div class="gambar-sosmed">
