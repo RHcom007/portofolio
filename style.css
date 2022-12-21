@@ -137,6 +137,49 @@ hr {
   height: 32px;
 }
 
+#kirim {
+  margin-top: 5px;
+  float: right;
+  font-family: inherit;
+  font-size: 18px;
+  background: royalblue;
+  color: white;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  border: none;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.2s;
+  font-weight: lighter;
+}
+#kirim:hover {
+  cursor: pointer;
+}
+#kirim span {
+  display: block;
+  margin-left: 0.3em;
+  transition: all 0.3s ease-in-out;
+}
+#kirim svg {
+  display: block;
+  transform-origin: center center;
+  transition: transform 0.3s ease-in-out;
+}
+#kirim:hover .svg-wrapper {
+  -webkit-animation: fly-1 0.6s ease-in-out infinite alternate;
+          animation: fly-1 0.6s ease-in-out infinite alternate;
+}
+#kirim:hover svg {
+  transform: translateX(1.2em) rotate(45deg) scale(1.1);
+}
+#kirim:hover span {
+  transform: translateX(5em);
+}
+#kirim:active {
+  transform: scale(0.95);
+}
+
 .container {
   position: relative;
   margin-left: 110px;

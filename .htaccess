@@ -1,3 +1,5 @@
-<IfModule mod_rewrite.c>
-    Header always set X-Frame-Options "SAMEORIGIN"
-</IfModule>
+php_value display_errors On
+php_value mbstring.http_input auto
+php_value date.timezone Asia/Jakarta
+
+ErrorDocument 404 http://radjaherlangga.rf.gd/404/
