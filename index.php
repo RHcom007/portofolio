@@ -1,5 +1,19 @@
 <?php
+header("X-Content-Type-Options: nosniff");
+header("Content-Security-Policy: default-src 'self'; script-src ajax.googleapis.com; style-src 'self'; font-src 'self'; img-src 'self' ./image;");
+
+
 if (isset($_POST['pesannya'])) {
+  if (isset($_COOKIE['csrf'])) {
+    if ($_COOKIE['csrf'] != $_POST['CSRF']) {
+      $valid = false;
+   }
+  } else {
+    $valid = false;
+  }
+  if ($valid = false) {
+    exit();
+  }
   require("./env.php");
   $env = new env;
   $con = $env->connectdb();
@@ -25,6 +39,19 @@ if (isset($_POST['pesannya'])) {
   echo $json;
   exit();
 }
+$csrf = rand(100000, 999999);
+setcookie ( 
+  'csrf',
+   $csrf,
+    [
+      "expires" => time()+60*60*24*1,
+      "samesite" => "strict",
+      "path" => "/",
+      "domain" => "",
+      "secure" => false,
+      "httponly" =>true 
+    ]
+  );
 ?>
 <html lang="en">
 
@@ -239,7 +266,7 @@ if (isset($_POST['pesannya'])) {
             dan mempercepat pengelolaan data</p>
         </div>
         <div class="card-ahli">
-          <img src="./image/gambar-project.jpg" alt="gambar project RHcom">
+          <!-- <img src="./image/gambar-project.jpg" alt="gambar project RHcom"> -->
           <h4>Aplikasi Chat</h4>
           <p>Aplikasi chat RHcom untuk mengchat biasa</p>
         </div>
@@ -335,6 +362,7 @@ if (isset($_POST['pesannya'])) {
           <textarea name="pesannya" id="pesan" cols="30" rows="10" placeholder="Isi pesan" required></textarea>
         </div>
         <input type="hidden" name="geo" id="geo">
+        <input type="hidden" name="CSRF">
         <button id="kirim" type="button">
           <div class="svg-wrapper-1">
             <div class="svg-wrapper">
