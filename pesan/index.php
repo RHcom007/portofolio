@@ -26,6 +26,7 @@ $result = $q->get_result();
             border-radius: 5px;
             padding: 4px;
             margin: 10px 0;
+            overflow-wrap: break-word;
         }
 
         .darker {
@@ -68,13 +69,14 @@ $result = $q->get_result();
 
         .lengkap {
             visibility: hidden;
+            overflow-wrap: break-word;
             position: absolute;
             right: 0;
             top: 0;
             z-index: 999;
             background-color: white;
             border-radius: 4px;
-            width: 500px;
+            max-width: 500px;
             font-size: smaller;
             overflow-wrap: break-word;
             padding: 4px;
@@ -84,6 +86,9 @@ $result = $q->get_result();
 </head>
 
 <body>
+<?php
+include('../layouts/header.html')
+?>
 
     <h2>Chat Messages</h2>
     <?php $i = 0;
@@ -94,7 +99,7 @@ $result = $q->get_result();
             <?= $pesannya['nama'] ?>
         </h3>
         <p>
-            <?= $pesannya['pesan'] ?>
+            <?= htmlentities($pesannya['pesan']) ?>
         </p>
         <span class="time-right">
             <?= $pesannya['waktu'] ?>

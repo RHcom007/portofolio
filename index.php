@@ -1,7 +1,7 @@
 <?php
 header('X-Frame-Options: deny');
 header("X-Content-Type-Options: nosniff");
-header("Content-Security-Policy: default-src 'self'; script-src 'sha256-+duGTPn+Tk4jtZ7Rjrp8CGafgOtZqzSQmFjzUpdG72Q=' 'sha256-6qcV7YJDmsywERNVpzvw/icRSaRHDGKU6fIFwMpRlyY=' ajax.googleapis.com; style-src 'self' 'sha256-qpNRdyufyDvsBeG2MdymLvMR4rfMK9yD4T8W2azmx8M='; font-src 'self'; img-src 'self' radjaherlangga.rf.gd; connect-src https://api.ipgeolocation.io/");
+header("Content-Security-Policy: default-src 'self'; script-src 'sha256-+duGTPn+Tk4jtZ7Rjrp8CGafgOtZqzSQmFjzUpdG72Q=' 'sha256-6qcV7YJDmsywERNVpzvw/icRSaRHDGKU6fIFwMpRlyY=' ajax.googleapis.com; style-src 'self' 'sha256-qpNRdyufyDvsBeG2MdymLvMR4rfMK9yD4T8W2azmx8M='; font-src 'self'; img-src 'self' radjaherlangga.rf.gd; connect-src 'self' http://jquery.js https://api.ipgeolocation.io/");
 
 
 if (isset($_POST['pesannya'])) {
@@ -65,6 +65,13 @@ setcookie (
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="pvU8c82ZpEe_ZhFVRNJNKDyF3f7_ABb9fG_HnzR0gJk" />
+  <meta name="description" content="Website portofolio M. Radja Herlangga mengenal Radja dan informasi tentangnya" />
+  <meta property="og:site_name" content="San Roque 2014 Pollos">
+  <meta property="og:title" content="San Roque 2014 Pollos" />
+  <meta property="og:description" content="Programa de fiestas" />
+  <meta property="og:image" itemprop="image" content="http://radjaherlangga.rf.gd/storage/image/f-i.jpg"/>
+  <meta property="og:type" content="website" />
   <link rel="stylesheet" href="./style.css">
   <link rel="shortcut icon" href="./storage/image/favicon.png" type="image/x-icon">
   <link rel="stylesheet" href="./layouts/header.css">
