@@ -30,7 +30,7 @@ if (isset($_POST['pesannya'])) {
   if (empty($_POST['nama'])) {
     $nama = "Anonymous";
   }
-  $pesan = $_POST['pesannya'];
+  $pesan = htmlentities($_POST['pesannya']);
   $waktu = date("Y-m-d H:i:s");
   $alamat = $_POST['geo'];
   $ip = $_SERVER['REMOTE_ADDR'];

@@ -1,18 +1,26 @@
-<!DOCTYPE html>
-<html>
 <?php
 require("../env.php");
 $env = new env;
 $con = $env->connectdb();
+if (isset($_POST['hapus'])) {
+    $q = $con->prepare("DELETE FROM pesanku;");
+    $q->execute();
+}
 $q = $con->prepare("SELECT * FROM pesanku;");
 $q->execute();
 $result = $q->get_result();
+if (isset($_GET['backup'])) {
+    include("./backup.php");
+    exit();
+}
 ?>
-
+<!DOCTYPE html>
+<html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         body {
+            position: relative;
             margin: 0 auto;
             max-width: 800px;
             padding: 0 20px;
@@ -82,14 +90,57 @@ $result = $q->get_result();
             padding: 4px;
             border: #aaa 1px solid;
         }
+        .menu{
+            position:absolute;
+            right: 0;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        .titik-tiga {
+            width: 30px;
+        }
+        .dropdown-child{
+            visibility: hidden;
+            background-color: white;
+            border: 1px solid #aaa;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .menu:hover .dropdown-child{
+            visibility: visible;
+        }
+        form {
+            display: block;
+            height: 20px;
+            padding: none;
+        }
+        form button {
+            float:right;
+            cursor:pointer;
+            border: none;
+            background-color: transparent;
+            padding: 0;
+        }
+        .menu a{
+            color: black;
+            text-decoration: none;
+            font-size: 14px;
+        }
     </style>
 </head>
 
 <body>
-<?php
-include('../layouts/header.html')
-?>
-
+    <div class="menu">
+        <svg class="titik-tiga" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M120 256c0 30.9-25.1 56-56 56s-56-25.1-56-56s25.1-56 56-56s56 25.1 56 56zm160 0c0 30.9-25.1 56-56 56s-56-25.1-56-56s25.1-56 56-56s56 25.1 56 56zm104 56c-30.9 0-56-25.1-56-56s25.1-56 56-56s56 25.1 56 56s-25.1 56-56 56z"/></svg>
+        <div class="dropdown-child">
+        <form action="" method="post">
+            <button type="submit" name="hapus" onclick="return confirm('apakah anda yakin menghapus pesan ini?')">Hapus Semua Pesan</button>
+        </form>
+        <a href=".?backup">Backup pesan</a>
+        </div>
+    </div>
     <h2>Chat Messages</h2>
     <?php $i = 0;
     while ($pesannya = $result->fetch_assoc()):
@@ -99,7 +150,7 @@ include('../layouts/header.html')
             <?= $pesannya['nama'] ?>
         </h3>
         <p>
-            <?= htmlentities($pesannya['pesan']) ?>
+            <?= $pesannya['pesan'] ?>
         </p>
         <span class="time-right">
             <?= $pesannya['waktu'] ?>
