@@ -390,20 +390,23 @@ hr {
 .shadow-js {
   filter: drop-shadow(0 0 5px hsl(60deg, 100%, 60%));
 }
-.shadow-ts {
+.shadow-php {
   filter: drop-shadow(0 0 5px hsl(220deg, 100%, 60%));
 }
 .shadow-node {
   filter: drop-shadow(0 0 5px hsl(110deg, 100%, 60%));
 }
-.shadow-react {
+.shadow-django {
   filter: drop-shadow(0 0 5px hsl(180deg, 100%, 60%));
 }
-.shadow-angular {
+.shadow-laravel {
   filter: drop-shadow(0 0 5px hsl(0deg, 100%, 60%));
 }
-.shadow-vue {
+.shadow-python {
   filter: drop-shadow(0 0 5px hsl(145deg, 100%, 60%));
+}
+.shadow-net {
+  filter: drop-shadow(0 0 5px hsl(308deg, 100%, 60%));
 }
 
 .circle-html {
@@ -422,25 +425,29 @@ hr {
   -webkit-animation: anim_circle-js 1s ease-in-out forwards;
           animation: anim_circle-js 1s ease-in-out forwards;
 }
-.circle-ts {
-  -webkit-animation: anim_circle-ts 1s ease-in-out forwards;
-          animation: anim_circle-ts 1s ease-in-out forwards;
+.circle-php {
+  -webkit-animation: anim_circle-php 1s ease-in-out forwards;
+          animation: anim_circle-php 1s ease-in-out forwards;
 }
 .circle-node {
   -webkit-animation: anim_circle-node 1s ease-in-out forwards;
           animation: anim_circle-node 1s ease-in-out forwards;
 }
-.circle-react {
-  -webkit-animation: anim_circle-react 1s ease-in-out forwards;
-          animation: anim_circle-react 1s ease-in-out forwards;
+.circle-django {
+  -webkit-animation: anim_circle-django 1s ease-in-out forwards;
+          animation: anim_circle-django 1s ease-in-out forwards;
 }
-.circle-angular {
-  -webkit-animation: anim_circle-angular 1s ease-in-out forwards;
-          animation: anim_circle-angular 1s ease-in-out forwards;
+.circle-laravel {
+  -webkit-animation: anim_circle-laravel 1s ease-in-out forwards;
+          animation: anim_circle-laravel 1s ease-in-out forwards;
 }
-.circle-vue {
-  -webkit-animation: anim_circle-vue 1s ease-in-out forwards;
-          animation: anim_circle-vue 1s ease-in-out forwards;
+.circle-python {
+  -webkit-animation: anim_circle-python 1s ease-in-out forwards;
+          animation: anim_circle-python 1s ease-in-out forwards;
+}
+.circle-net {
+  -webkit-animation: anim_circle-net 1s ease-in-out forwards;
+          animation: anim_circle-net 1s ease-in-out forwards;
 }
 
 .progressbar__text {
@@ -495,12 +502,12 @@ hr {
     stroke-dashoffset: 88;
   }
 }
-@-webkit-keyframes anim_circle-ts {
+@-webkit-keyframes anim_circle-php {
   to {
     stroke-dashoffset: 198;
   }
 }
-@keyframes anim_circle-ts {
+@keyframes anim_circle-php {
   to {
     stroke-dashoffset: 198;
   }
@@ -515,33 +522,43 @@ hr {
     stroke-dashoffset: 308;
   }
 }
-@-webkit-keyframes anim_circle-react {
+@-webkit-keyframes anim_circle-django {
   to {
     stroke-dashoffset: 387.2;
   }
 }
-@keyframes anim_circle-react {
+@keyframes anim_circle-django {
   to {
     stroke-dashoffset: 387.2;
   }
 }
-@-webkit-keyframes anim_circle-angular {
+@-webkit-keyframes anim_circle-laravel {
   to {
     stroke-dashoffset: 418;
   }
 }
-@keyframes anim_circle-angular {
+@keyframes anim_circle-laravel {
   to {
     stroke-dashoffset: 418;
   }
 }
-@-webkit-keyframes anim_circle-vue {
+@-webkit-keyframes anim_circle-python {
   to {
     stroke-dashoffset: 431.2;
   }
 }
-@keyframes anim_circle-vue {
+@keyframes anim_circle-python {
   to {
     stroke-dashoffset: 431.2;
+  }
+}
+@-webkit-keyframes anim_circle-net {
+  to {
+    stroke-dashoffset: 396;
+  }
+}
+@keyframes anim_circle-net {
+  to {
+    stroke-dashoffset: 396;
   }
 }/*# sourceMappingURL=style.css.map */

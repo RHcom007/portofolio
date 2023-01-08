@@ -212,16 +212,16 @@ setcookie (
 
       <div class="progressbar">
         <svg class="progressbar__svg">
-          <circle cx="80" cy="80" r="70" class="progressbar__svg-circle circle-ts shadow-ts"></circle>
+          <circle cx="80" cy="80" r="70" class="progressbar__svg-circle circle-php shadow-php"></circle>
         </svg>
-        <span class="progressbar__text shadow-ts">php</span>
+        <span class="progressbar__text shadow-php">php</span>
       </div>
 
       <div class="progressbar">
         <svg class="progressbar__svg">
-          <circle cx="80" cy="80" r="70" class="progressbar__svg-circle circle-angular shadow-angular"></circle>
+          <circle cx="80" cy="80" r="70" class="progressbar__svg-circle circle-laravel shadow-laravel"></circle>
         </svg>
-        <span class="progressbar__text shadow-angular">Laravel</span>
+        <span class="progressbar__text shadow-laravel">Laravel</span>
       </div>
 
       <div class="progressbar">
@@ -233,15 +233,15 @@ setcookie (
 
       <div class="progressbar">
         <svg class="progressbar__svg">
-          <circle cx="80" cy="80" r="70" class="progressbar__svg-circle circle-react shadow-react"></circle>
+          <circle cx="80" cy="80" r="70" class="progressbar__svg-circle circle-django shadow-django"></circle>
         </svg>
-        <span class="progressbar__text shadow-react">Django</span>
+        <span class="progressbar__text shadow-django">Django</span>
       </div>
       <div class="progressbar">
         <svg class="progressbar__svg">
-          <circle cx="80" cy="80" r="70" class="progressbar__svg-circle circle-vue shadow-vue"></circle>
+          <circle cx="80" cy="80" r="70" class="progressbar__svg-circle circle-python shadow-python"></circle>
         </svg>
-        <span class="progressbar__text shadow-vue">Python</span>
+        <span class="progressbar__text shadow-python">Python</span>
       </div>
       <div class="progressbar">
         <svg class="progressbar__svg">
