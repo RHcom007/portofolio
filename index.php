@@ -120,7 +120,7 @@ setcookie (
 <body>
   <main>
     <div id="Perkenalan-diri">
-      <div class="kanan-diri" data-aos="fade-left">
+      <div class="kanan-diri">
         <div class="container">
           <div class="liquid"></div>
           <div class="liquid"></div>
