@@ -150,7 +150,7 @@ setcookie (
       </div>
     </div>
     <div>
-      <a id="btn-download-cv" href="http://localhost/portofolio/storage/CV%20M.%20Radja%20Herlangga.pdf">Download CV</a>
+      <a id="btn-download-cv" href="/storage/CV%20M.%20Radja%20Herlangga.pdf">Download CV</a>
     </div>
     <div class="project-ku">
       <h2>Project saya</h2>
